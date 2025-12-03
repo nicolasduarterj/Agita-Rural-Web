@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="modelos.Acao, modelos.Local"%>
 <%@ include file="/componentes/barraNav.jsp" %>
 
 <!DOCTYPE html>
@@ -62,47 +62,39 @@
 </div>
 
 
+<% Acao acao1 = new Acao("Tênis", "Venha jogar tênis!", "Alunos", new Local("Quadra", "Rural", ""), null, null, false);
+   Acao acao2 = new Acao("Jiu-jitsu", "Aprenda a se defender!", "Alunos", new Local("DEFIS", "Rural", ""), null, null, false);
+   Acao acao3 = new Acao("Futebol", "Um clássico brasileiro!", "Alunos", new Local("Ginásio", "Rural", ""), null, null, false);
+   
+   session.setAttribute("acoes", new Acao[]{acao1, acao2, acao3});
+%>
+
 <div class="container">
-
+	
     <h2>Ações Destaques</h2>
-
+	
     <div class="card-container">
 
         <!-- CARD 1 -->
         <div class="card">
-            <h3>Ação Um</h3>
-            <p>Ação de número um.</p>
-            <a href="acao.jsp?id=3" class="button">Ver detalhes</a>
+            <h3><%= acao1.getNome() %></h3>
+            <p><%= acao1.getSobre() %></p>
+            <a href="acao.jsp?id=0" class="button">Ver detalhes</a>
         </div>
 
         <!-- CARD 2 -->
         <div class="card">
-            <h3>Ação Dois</h3>
-            <p>Ação de número dois.</p>
-            <a href="acao.jsp?id=3" class="button">Ver detalhes</a>
+            <h3><%= acao2.getNome() %></h3>
+            <p><%= acao2.getSobre() %></p>
+            <a href="acao.jsp?id=1" class="button">Ver detalhes</a>
         </div>
 
         <!-- CARD 3 -->
         <div class="card">
-            <h3>Ação Três</h3>
-            <p>Ação de número trẽs.</p>
-            <a href="acao.jsp?id=3" class="button">Ver detalhes</a>
+            <h3><%= acao3.getNome() %></h3>
+            <p><%= acao3.getSobre() %></p>
+            <a href="acao.jsp?id=2" class="button">Ver detalhes</a>
         </div>
-        
-        <!-- CARD 4 -->
-        <div class="card">
-            <h3>Ação Quatro</h3>
-            <p>Ação de número quatro.</p>
-            <a href="acao.jsp?id=3" class="button">Ver detalhes</a>
-        </div>
-        
-        <!-- CARD 5 -->
-        <div class="card">
-            <h3>Ação Cinco</h3>
-            <p>Ação de número cinco.</p>
-            <a href="acao.jsp?id=3" class="button">Ver detalhes</a>
-        </div>
-
     </div>
 </div>
 </body>
