@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.login-box {
+    max-width: 420px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.login-box h2 {
+    color: #006837;
+    margin-bottom: 12px;
+}
+
+.form-row {
+    margin-bottom: 12px;
+}
+
+.form-row input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.error {
+    color: #b00020;
+    margin-bottom: 12px;
+}
+
+.actions {
+    text-align: right;
+}
+
+.btn {
+    background: #006837;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}

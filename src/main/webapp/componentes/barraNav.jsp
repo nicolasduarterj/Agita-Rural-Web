@@ -7,9 +7,8 @@
 
     <!-- MENU -->
     <div class="menu">
-        <a href="<%= request.getContextPath() %>/home.jsp">Home</a>
-        <a href="<%= request.getContextPath() %>/projetos.jsp">Projetos</a>
-        <a href="<%= request.getContextPath() %>/acoes.jsp">Ações</a>
-        <a href="<%= request.getContextPath() %>/user.jsp">User</a>
+        <a href="<%= request.getContextPath() %>/publico/home.jsp">Home</a>
+        <a href="<%= request.getContextPath() %>/publico/projetos.jsp">Projetos</a>
+        <a href="<%= request.getContextPath() %>/publico/acoes.jsp">Ações</a>
     </div>
 </nav>
