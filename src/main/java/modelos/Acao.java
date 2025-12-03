@@ -13,17 +13,33 @@ public class Acao {
 	private int id;
 	
 	@OneToMany
-    private final List<RedeSocial> perfis;
+	@JoinColumn(name = "acao_id")
+    private List<RedeSocial> perfis = new ArrayList<>();
 	
 	@ManyToMany
-    private final List<Representante> representantes;
-    
+	@JoinTable(
+			name = "representantes_acao",
+			joinColumns = @JoinColumn(name = "acao_id"),
+			inverseJoinColumns = @JoinColumn(name = "representante_id")
+	)
+    private List<Representante> representantes;
+	
     private String nome;
+    
     private String sobre;
+    
+    @Column(name = "publico_alvo")
     private String publicoAlvo;
-    private boolean taxa;
+    
+    @Column(name = "possui_taxa")
+    private boolean possuiTaxa;
+    
     private String preco;
+    
+    @Column(name = "data_inicio")
     private LocalDateTime dataInicio;
+    
+    @Column(name = "data_final")
     private LocalDateTime dataFim;
     
     @Embedded
@@ -34,8 +50,10 @@ public class Acao {
     
     @Enumerated(EnumType.STRING)
     private Status status;
-
-    public Acao(String nome, String sobre, String publicoAlvo, Local localizacao, List<Representante> representantes, Unidade unidade, boolean taxa) {
+    
+    protected Acao() {}
+    
+    public Acao(String nome, String sobre, String publicoAlvo, Local localizacao, List<Representante> representantes, Unidade unidade, boolean possuiTaxa) {
         this.nome = nome;
         this.sobre = sobre;
         this.publicoAlvo = publicoAlvo;
@@ -43,11 +61,11 @@ public class Acao {
 		this.perfis = null;
         this.representantes = representantes;
         this.unidade = unidade;
-        this.taxa = taxa;
+        this.possuiTaxa = possuiTaxa;
         this.dataInicio = LocalDateTime.now();
         this.status = Status.ATIVO;
         
-        if (!taxa) this.preco = "GRATUITO";
+        if (!possuiTaxa) this.preco = "GRATUITO";
     }
 
     public String getNome() {
@@ -84,7 +102,7 @@ public class Acao {
     public Status getStatus() {
         return status;
     }
-    public boolean getTaxa() { return taxa; }
+    public boolean getTaxa() { return possuiTaxa; }
     public String getPreco() { return preco; }
 
     public void setSobre(String sobre) {
@@ -101,7 +119,7 @@ public class Acao {
         this.status = status;
     }
     public void setPreco(String preco) {
-        if (!taxa) { 
+        if (!possuiTaxa) { 
         	this.preco = "GRATUITO"; 
         } else {
         	this.preco = preco;

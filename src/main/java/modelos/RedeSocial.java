@@ -1,8 +1,19 @@
 package modelos;
 
+import jakarta.persistence.*;
+
+@Entity
 public class RedeSocial {
-	private final String nomePlataforma;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name = "nome_plataforma")
+	private String nomePlataforma;
+	
 	private String link;
+	
+	protected RedeSocial() {}
 	
     public RedeSocial(String nomePlataforma, String link){
         this.nomePlataforma = nomePlataforma;

@@ -3,13 +3,35 @@ package modelos;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Representante {
-	private final String nomeCompleto;
-	private final String cpf;
-	private String emailContato;
-    private final List<Projeto> projetos;
-    private final List<Acao> acoes;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	
+	@Column(name = "nome_completo")
+	private String nomeCompleto;
+	
+	private String cpf;
+	
+	@Column(name = "email_contato")
+	private String emailContato;
+	
+	@ManyToMany
+	@JoinTable(
+			name = "representante_projeto",
+			joinColumns = @JoinColumn(name = "representante_id"),
+			inverseJoinColumns = @JoinColumn(name = "projeto_id")
+	)
+    private List<Projeto> projetos;
+	
+	@ManyToMany(mappedBy = "representantes")
+    private List<Acao> acoes;
+	
+    protected Representante() {}
+    
     public Representante(String nomeCompleto, String cpf, String emailContato){
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;

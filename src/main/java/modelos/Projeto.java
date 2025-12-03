@@ -3,21 +3,39 @@ package modelos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Projeto {
-	private String nome;
-	private String sobre;
-    private String publicoAlvo;
-	private Local localParaInformacao;
-	private final List<Acao> acoes;
-	private final List<RedeSocial> perfis;
+import jakarta.persistence.*;
 
+@Entity
+public class Projeto {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
+	private String nome;
+	
+	private String sobre;
+	
+	@Column(name = "publico_alvo")
+    private String publicoAlvo;
+    
+    @Embedded
+	private Local localParaInformacao;
+	
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "projeto_id")
+	private List<Acao> acoes = new ArrayList<>();
+	
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "projeto_id")
+	private List<RedeSocial> perfis = new ArrayList<>();
+
+	protected Projeto() {}
+	
     public Projeto(String nome, String sobre, String publicoAlvo, Local localParaInformacao){
         this.nome = nome;
         this.sobre = sobre;
         this.publicoAlvo = publicoAlvo;
         this.localParaInformacao = localParaInformacao;
-        this.acoes = new ArrayList<>();
-        this.perfis = new ArrayList<>();
     }
 
     public String getNome() {
