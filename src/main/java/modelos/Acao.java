@@ -4,6 +4,7 @@ import enums.Status;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,8 +77,6 @@ public class Acao {
         }
     }
 
-
-
     public int getId() {
         return id;
     }
@@ -100,6 +99,22 @@ public class Acao {
 
     public Local getLocalizacao() {
         return localizacao;
+    }
+    
+    private String formatarData(LocalDateTime data) {
+    	if (data == null)
+    		return "";
+    	
+    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    	return data.format(dtf);
+    }
+    
+    public String getDataInicioFormatada() {
+    	return formatarData(this.dataInicio);
+    }
+    
+    public String getDataFimFormatada() {
+    	return formatarData(this.dataFim);
     }
 
     public LocalDateTime getDataInicio() {
@@ -130,6 +145,9 @@ public class Acao {
         return preco;
     }
 
+    public void setId(int id) {
+    	this.id = id;
+    }
     
     public void setSobre(String sobre) {
         this.sobre = sobre;

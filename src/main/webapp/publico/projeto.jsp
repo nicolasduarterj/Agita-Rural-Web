@@ -15,15 +15,14 @@
 <%
 	Projeto projeto = (Projeto) request.getAttribute("projeto");
 	String acoesCards = "";
-	int i = 0;
 
 	for (Acao acao : projeto.getAcoes()) {
 	   acoesCards += String.format("<div class=\"card\">" +
 	            "<h3>%s</h3>" +
 	            "<p>%s</p>" +
-	            "<a href=\"acao.jsp?id=%d\" class=\"button\">Ver detalhes</a>" +
-	        "</div>\n\n", acao.getNome(), acao.getSobre(), i);
-	   i++;
+	            "<a href=\"acao?id=%d\" class=\"button\">Ver detalhes</a>" +
+	        "</div>\n\n", acao.getNome(), acao.getSobre(), acao.getId());
+	   
 	}
 	
 	if (acoesCards.equals(""))

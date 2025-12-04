@@ -43,17 +43,16 @@
 <div class="container">
     <h2>Ações Destaques</h2>
     <div class="card-container">
-    <% if (acoes != null) { %>
-    	<% for (int i = 0; i < acoes.size(); i++) {
-            Acao a = acoes.get(i); %>
-
-            <div class="card">
-                <h3><%= a.getNome() %></h3>
-                <p><%= a.getSobre() %></p>
-                <a href="<%= request.getContextPath() %>/acao?id=<%= i %>" class="button">Ver detalhes</a>
-            </div>
-    	<% } %>
-	<% } %>
+    <% if (acoes != null && !acoes.isEmpty()) {%>
+		<% for (Acao acao : acoes) {%>
+			<div class="card">
+	            <h3><%= acao.getNome() %></h3>
+	            <p><%= acao.getSobre() %></p>
+	            <p>Inicio: <%= acao.getDataInicioFormatada() %><p>
+	           	<a href="<%= request.getContextPath()%>/acao?id=<%= acao.getId() %>" class="button">Ver detalhes</a>
+		        </div>
+				<% } %>
+		<% } %>
     </div>
 </div>
 </body>

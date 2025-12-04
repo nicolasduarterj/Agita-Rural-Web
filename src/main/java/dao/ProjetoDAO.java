@@ -12,14 +12,9 @@ public class ProjetoDAO {
     private static final List<Projeto> projetos = new ArrayList<>();
 
     static {
-        Acao acao1 = new Acao("Tênis", "Venha jogar tênis!", "Alunos",
-                new Local("Quadra", "Rural", ""), null, null, false);
-
-        Acao acao2 = new Acao("Jiu-jitsu", "Aprenda a se defender!", "Alunos",
-                new Local("DEFIS", "Rural", ""), null, null, false);
-
-        Acao acao3 = new Acao("Futebol", "Um clássico brasileiro!", "Alunos",
-                new Local("Ginásio", "Rural", ""), null, null, false);
+        AcaoDAO acaoDAO = new AcaoDAO();
+        
+        List<Acao> acoes = acaoDAO.listarRecentes();
 
         Projeto principal = new Projeto(
                 "Esporte na Rural",
@@ -37,9 +32,9 @@ public class ProjetoDAO {
         principal.setId(1);
         projeto2.setId(2);
         
-        principal.adicionarAcao(acao1);
-        principal.adicionarAcao(acao2);
-        principal.adicionarAcao(acao3);      
+        
+        for (Acao acao : acoes)
+        	principal.adicionarAcao(acao);
         
         projetos.add(principal);
         projetos.add(projeto2);

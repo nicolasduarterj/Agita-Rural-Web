@@ -18,7 +18,7 @@ public class HomeServlet extends HttpServlet {
         ProjetoDAO projetoDAO = new ProjetoDAO();
 
         Projeto principal = projetoDAO.buscarPrincipal();
-
+        
         request.setAttribute("projetoPrincipal", principal);
         request.setAttribute("acoes", principal.getAcoes()); 
 

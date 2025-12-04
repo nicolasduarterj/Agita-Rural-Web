@@ -4,7 +4,9 @@ import modelos.Acao;
 import modelos.Local;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AcaoDAO {
 
@@ -56,5 +58,46 @@ public class AcaoDAO {
                 .filter(a -> a.getId() == id)
                 .findFirst()
                 .orElse(null);
+    }
+    
+    public List<Acao> listarRecentes() {
+        return acoes.stream()
+            .sorted((a1, a2) -> Integer.compare(a2.getId(), a1.getId()))
+            .limit(3)
+            .collect(Collectors.toList());
+    }
+    
+    public List<Acao> listarComFiltros(String nomeAcao, boolean semTaxa, String[] status){
+    	List<Acao> lista = new ArrayList<>();
+    	
+    	for (Acao acao : acoes) {
+    		if (nomeAcao != null)
+    			if (!acao.getNome().toLowerCase().contains(nomeAcao.toLowerCase()))
+                    continue;
+        
+    		if (semTaxa) {
+    			if (acao.getTaxa())
+    				continue;
+    		}
+    		
+    		if (status != null && status.length > 0) {
+    			boolean statusBateu = false;
+
+                for (String s : status) {
+                    if (acao.getStatus().name().equals(s)) {
+                        statusBateu = true;
+                        break;
+                    }
+                }
+
+                if (!statusBateu) {
+                    continue;
+                }
+    		}
+    		
+    		lista.add(acao);
+    	}
+    	
+    	return lista;	
     }
 }
