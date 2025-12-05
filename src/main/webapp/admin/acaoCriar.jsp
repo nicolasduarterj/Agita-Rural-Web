@@ -55,6 +55,16 @@
             <label>Ponto de referência</label>
             <input type="text" name="pontoReferencia" />
         </div>
+        
+        <div class="criar-row">
+        	<label>Data de início</label>
+        	<input type="datetime-local" name="dataInicio">
+        </div>
+        
+        <div class="criar-row">
+        	<label>Data de fim</label>
+        	<input type="datetime-local" name="dataFim">
+        </div>
 
         <!-- Contato -->
         <h3>Contato</h3>

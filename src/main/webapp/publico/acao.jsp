@@ -1,3 +1,4 @@
+<%@page import="modelos.Representante"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="modelos.Acao"%>
 <%@ include file="/componentes/barraNav.jsp" %>
@@ -45,6 +46,23 @@
 		<div class="card">
             <h3>Público-alvo</h3>
             <h4><%= acaoprincipal.getPublicoAlvo() %></h4>
+        </div>
+        
+        <div class="card">
+        	<h3>Período</h3>
+        	<h4>Inicia em <%= acaoprincipal.getDataInicioFormatada() %> até <%= acaoprincipal.getDataFimFormatada() %></h4>
+        </div>
+        
+        <div class="card">
+            <h3>Responsáveis</h3>
+            <% for (Representante rp : acaoprincipal.getRepresentantes()){ %>
+            <h4><%= rp.getNomeCompleto() %></h4>
+            <% } %>
+        </div>
+        
+        <div class="card">
+            <h3>Unidade</h3>
+            <h4><%= acaoprincipal.getUnidade().getNome() %></h4>
         </div>
         
         <div class="card">

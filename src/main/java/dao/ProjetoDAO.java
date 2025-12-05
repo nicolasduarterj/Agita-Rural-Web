@@ -18,15 +18,9 @@ public class ProjetoDAO {
     private static final List<Projeto> projetos = new ArrayList<>();
 
     static {
-        // Ações de exemplo
-        Acao acao1 = new Acao("Tênis", "Venha jogar tênis!", "Alunos",
-                new Local("Quadra", "Rural", ""), null, null, false);
-
-        Acao acao2 = new Acao("Jiu-jitsu", "Aprenda a se defender!", "Alunos",
-                new Local("DEFIS", "Rural", ""), null, null, false);
-
-        Acao acao3 = new Acao("Futebol", "Um clássico brasileiro!", "Alunos",
-                new Local("Ginásio", "Rural", ""), null, null, false);
+        AcaoDAO acaoDAO = new AcaoDAO();
+        
+        List<Acao> acoes = acaoDAO.listarRecentes();
 
         // Responsáveis de exemplo
         Representante rep1 = new Representante("João Silva", null, "joao@email.com", null);
@@ -65,16 +59,13 @@ public class ProjetoDAO {
                 unidade2
         );
 
-        principal.adicionarAcao(acao1);
-        principal.adicionarAcao(acao2);
-        principal.adicionarAcao(acao3);
-
-        principal.adicionarPerfil(perfil1);
-        projeto2.adicionarPerfil(perfil2);
-
         principal.setId(1);
         projeto2.setId(2);
-
+        
+        
+        for (Acao acao : acoes)
+        	principal.adicionarAcao(acao);
+        
         projetos.add(principal);
         projetos.add(projeto2);
     }

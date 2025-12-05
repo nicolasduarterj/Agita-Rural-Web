@@ -9,6 +9,6 @@
     <div class="menu">
         <a href="<%= request.getContextPath() %>/home">Home</a>
         <a href="<%= request.getContextPath() %>/projetos">Projetos</a>
-        <a href="<%= request.getContextPath() %>/publico/acoes.jsp">Ações</a>
+        <a href="<%= request.getContextPath() %>/acoes">Ações</a>
     </div>
 </nav>
