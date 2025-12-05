@@ -29,7 +29,7 @@
 
     <div class="cards-grid">
 
-        <a href="<%= request.getContextPath() %>/admin/projetoMod" class="card">
+        <a href="<%= request.getContextPath() %>/admin/projetoListar" class="card">
             <h3>Projetos</h3>
             <p>Gerencie todos os projetos cadastrados.</p>
         </a>
@@ -39,7 +39,7 @@
             <p>Visualize e edite todas as ações.</p>
         </a>
 
-        <a href="<%= request.getContextPath() %>/admin/projetoCriar.jsp" class="card card-green">
+        <a href="<%= request.getContextPath() %>/admin/projeto/criar" class="card card-green">
             <h3>+ Novo Projeto</h3>
             <p>Criar um novo projeto comunitário.</p>
         </a>

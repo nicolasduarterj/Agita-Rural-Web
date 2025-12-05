@@ -4,12 +4,10 @@
 <%@ page import="java.util.List" %>
 <%@ include file="/componentes/barraNav.jsp" %>
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Nova Ação</title>
-
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/criar.css">
 </head>
@@ -19,7 +17,7 @@
 
     <h2>Cadastrar Nova Ação</h2>
 
-    <form action="<%= request.getContextPath() %>/admin/salvarAcao" method="post">
+    <form action="<%= request.getContextPath() %>/admin/acao/salvar" method="post">
 
         <!-- Nome -->
         <div class="criar-row">
@@ -41,22 +39,18 @@
 
         <!-- Localização -->
         <h3>Localização</h3>
-
         <div class="criar-row">
             <label>Logradouro</label>
             <input type="text" name="logradouro" required />
         </div>
-
         <div class="criar-row">
             <label>Bairro</label>
             <input type="text" name="bairro" required />
         </div>
-
         <div class="criar-row">
             <label>Cidade</label>
             <input type="text" name="cidade" required />
         </div>
-
         <div class="criar-row">
             <label>Ponto de referência</label>
             <input type="text" name="pontoReferencia" />
@@ -70,6 +64,23 @@
         <div class="criar-row">
         	<label>Data de fim</label>
         	<input type="datetime-local" name="dataFim">
+        </div>
+
+        <!-- Contato -->
+        <h3>Contato</h3>
+        <div class="criar-row">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="email@exemplo.com" />
+        </div>
+        <div class="criar-row">
+            <label>Celular</label>
+            <input type="text" name="celular" placeholder="(00) 00000-0000" />
+        </div>
+
+        <!-- Link externo -->
+        <div class="criar-row">
+            <label>Link Externo</label>
+            <input type="url" name="linkExterno" placeholder="https://..." />
         </div>
 
         <!-- Taxa -->

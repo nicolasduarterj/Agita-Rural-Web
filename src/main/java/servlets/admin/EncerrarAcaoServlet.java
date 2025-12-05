@@ -18,7 +18,6 @@ public class EncerrarAcaoServlet extends HttpServlet {
             throws ServletException, IOException {
 
         int id = Integer.parseInt(request.getParameter("id"));
-
         AcaoDAO acaoDAO = new AcaoDAO();
         Acao acao = acaoDAO.buscarPorId(id);
 
@@ -30,6 +29,8 @@ public class EncerrarAcaoServlet extends HttpServlet {
 
         acao.setStatus(Status.DESCONTINUADO);
         acao.setDataFim(LocalDateTime.now());
+
+        acaoDAO.atualizar(acao);
 
         response.sendRedirect(request.getContextPath() + "/admin/acaoListar");
     }
