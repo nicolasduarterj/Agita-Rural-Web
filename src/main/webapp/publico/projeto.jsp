@@ -1,3 +1,6 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="modelos.RedeSocial"%>
+<%@page import="modelos.Representante"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="modelos.Acao, modelos.Projeto"%>
 <%@ include file="/componentes/barraNav.jsp" %>
@@ -27,6 +30,8 @@
 	
 	if (acoesCards.equals(""))
 		acoesCards += "<div class=\"card\"" + "<h3>Sem ações registradas</h3>" + "</div>";
+		
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 %>
 
 <section style="background:#004d26; color:white; padding:50px 20px; text-align:center;">
@@ -56,9 +61,39 @@
         </div>
         
         <div class="card">
+        	<h3>Data de início</h3>
+        	<h4><%= projeto.getDataInicio().format(formatter) %> </h4>
+        </div>
+        
+        <div class="card">
             <h3>Local para informações</h3>
             <h4><%= projeto.getLocalParaInformacao().getNome() %></h4>
-            <p>Endereço: <%= projeto.getLocalParaInformacao().getEndereco()%>; Ponto de referência: <%= projeto.getLocalParaInformacao().getPontoDeReferencia() %></p>
+            <p>Endereço: <%= projeto.getLocalParaInformacao().getEndereco()%>;</p> 
+            <p>Ponto de referência: <%= projeto.getLocalParaInformacao().getPontoDeReferencia() %></p>
+        </div>
+        
+        <div class="card">
+            <h3>Responsáveis</h3>
+            <% for (Representante rp : projeto.getResponsaveis()){ %>
+            <h4><%= rp.getNomeCompleto() %></h4>
+            <% } %>
+        </div>
+        
+        <div class="card">
+        	<h3>Contatos</h3>
+        	<h4>Email: <%= projeto.getEmailContato() %> </h4>
+        	<h4>Telefone: <%= projeto.getCelularContato() %> </h4>
+        	<h4>Link: <a href="<%= projeto.getLinkExterno() %>"> <%= projeto.getLinkExterno() %> </a> </h4>
+        </div>
+        
+        <div class="card">
+	        <h3>Nossas redes</h3>
+	        	<% if (projeto.getPerfis().isEmpty()) {%>
+	        	<h4>Sem redes sociais cadastradas</h4>
+	        	<% } %>
+	            <% for (RedeSocial rd : projeto.getPerfis() ){ %>
+	            <h4><%= rd.getNomePlataforma() %>: <a href="<%= rd.getLink() %>"> <%= rd.getLink() %> </a></h4>
+	            <% } %>
         </div>
     </div>
     

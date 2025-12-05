@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="modelos.Acao, modelos.Unidade, java.util.*" %>
@@ -19,7 +20,7 @@
     Acao acao = (Acao) request.getAttribute("acao");
     List<Unidade> unidades = (List<Unidade>) request.getAttribute("unidades");
 
-    boolean encerrada = acao.getDataFim() != null;
+    boolean encerrada = LocalDate.now().isAfter(acao.getDataFim());
 %>
 
 <section style="background:#004d26; color:white; padding:30px; text-align:center;">

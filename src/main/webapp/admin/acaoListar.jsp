@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="modelos.Acao, modelos.Unidade, java.util.*, java.time.format.DateTimeFormatter" %>
 <%@ include file="/componentes/barraNav.jsp" %>
 
@@ -17,7 +18,6 @@
     // Obtendo a lista de ações do request
     List<Acao> acoes = (List<Acao>) request.getAttribute("acoes");
     // Formatter para exibir LocalDateTime de forma amigável
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 %>
 
 <section class="header-section">
@@ -31,14 +31,14 @@
             <th>Nome</th>
             <th>Público</th>
             <th>Status</th>
-            <th>Data de Fim</th> <!-- Nova coluna -->
+            <th>Data de encerramento</th> <!-- Nova coluna -->
             <th>Unidade</th>
             <th>Ações</th>
         </tr>
 
         <% if (acoes != null && !acoes.isEmpty()) { 
                for (Acao acao : acoes) {
-                   boolean encerrada = acao.getDataFim() != null;
+                   boolean encerrada = LocalDate.now().isAfter(acao.getDataFim());
         %>
         <tr>
             <td><%= acao.getId() %></td>
@@ -52,7 +52,7 @@
                 <% } %>
             </td>
             <td>
-                <%= encerrada ? acao.getDataFim().format(formatter) : "-" %>
+                <%= encerrada ? acao.getDataFimFormatada() : "-" %>
             </td>
             <td>
                 <%= acao.getUnidade() != null ? acao.getUnidade().getNome() : "N/A" %>

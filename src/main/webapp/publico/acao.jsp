@@ -1,3 +1,4 @@
+<%@page import="modelos.RedeSocial"%>
 <%@page import="modelos.Representante"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="modelos.Acao"%>
@@ -69,6 +70,16 @@
             <h3>Local</h3>
             <h4><%= acaoprincipal.getLocalizacao().getNome() %></h4>
             <p>Endereço: <%= acaoprincipal.getLocalizacao().getEndereco()%>; Ponto de referência: <%= acaoprincipal.getLocalizacao().getPontoDeReferencia() %></p>
+        </div>
+        
+        <div class="card">
+	        <h3>Nossas redes</h3>
+		        <% if (acaoprincipal.getPerfis().isEmpty()) {%>
+		        	<h4>Sem redes sociais cadastradas</h4>
+		        	<% } %>
+	            <% for (RedeSocial rd : acaoprincipal.getPerfis()){ %>
+	            <h4><%= rd.getNomePlataforma() %>: <a href="<%= rd.getLink() %>"> <%= rd.getLink() %> </a></h4>
+	            <% } %>
         </div>
     </div>
 </div>

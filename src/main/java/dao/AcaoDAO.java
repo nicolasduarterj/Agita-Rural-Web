@@ -5,6 +5,7 @@ import modelos.Local;
 import modelos.Representante;
 import modelos.Unidade;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,20 +24,20 @@ public class AcaoDAO {
     			new Representante("José Carlos", "12345678910", "josecarlos@email.com", "senha")
     			));
     	
-    	Unidade departamento = new Unidade("Departamento de Educação Física", TipoUnidade.DEPARTAMENTO);
+    	Unidade departamento = new Unidade("Departamento de Educação Física e Desportos", TipoUnidade.DEPARTAMENTO);
     	
         Acao a1 = new Acao("Tênis", "Venha jogar tênis!", "Alunos",
-                new Local("Quadra", "Rural", ""), LocalDateTime.now().plusDays(10), LocalDateTime.now().plusDays(20),
+                new Local("Quadras de Tênis da UFRRJ", "Ufrrj, Seropédica - RJ, 23890-000", ""), LocalDate.now().plusDays(10), LocalDate.now().plusDays(20),
                 rps, departamento, false);
         atribuirId(a1);
 
         Acao a2 = new Acao("Jiu-jitsu", "Aprenda a se defender!", "Alunos",
-                new Local("DEFIS", "Rural", ""), LocalDateTime.now().plusDays(10), LocalDateTime.now().plusDays(20),
+                new Local("DEFD - Departamento de Educação Física e Desportos", "Ufrrj, Seropédica - RJ, 23890-000", ""), LocalDate.now().plusDays(10), LocalDate.now().plusDays(20),
                 rps, departamento, false);
         atribuirId(a2);
 
         Acao a3 = new Acao("Futebol", "Um clássico brasileiro!", "Alunos",
-                new Local("Ginásio", "Rural", ""), LocalDateTime.now().plusDays(10), LocalDateTime.now().plusDays(20),
+                new Local("Ginásio", "Ufrrj, Seropédica - RJ, 23890-000", ""), LocalDate.now().plusDays(10), LocalDate.now().plusDays(20),
                 rps, departamento, false);
         atribuirId(a3);
 

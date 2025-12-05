@@ -31,15 +31,15 @@ public class ProjetoDAO {
         RedeSocial perfil2 = new RedeSocial("Facebook", "https://facebook.com/esporte");
 
         // Unidades de exemplo
-        Unidade unidade1 = new Unidade(4, "Departamento da Computação", TipoUnidade.DEPARTAMENTO);
-        Unidade unidade2 = new Unidade(5, "Instituto da fazenda", TipoUnidade.INSTITUTO);
+        Unidade unidade1 = new Unidade(4, "Departamento de Educação Física e Desportos", TipoUnidade.DEPARTAMENTO);
+        Unidade unidade2 = new Unidade(5, "Instituto de ciências humanas e sociais", TipoUnidade.INSTITUTO);
 
         // Projetos
         Projeto principal = new Projeto(
                 "Esporte na Rural",
                 "Vários esportes dentro da Universidade!",
                 "Alunos",
-                new Local("DEFIS", "Rural", "Próximo ao ginásio"),
+                new Local("DEFD - Departamento de Educação Física e Desportos", "Ufrrj, Seropédica - RJ, 23890-000", ""),
                 rep1,
                 "contato@esporte.com",
                 "1234-5678",
@@ -65,6 +65,9 @@ public class ProjetoDAO {
         
         for (Acao acao : acoes)
         	principal.adicionarAcao(acao);
+        
+        principal.adicionarPerfil(perfil1);
+        principal.adicionarPerfil(perfil2);
         
         projetos.add(principal);
         projetos.add(projeto2);

@@ -58,12 +58,12 @@
         
         <div class="criar-row">
         	<label>Data de início</label>
-        	<input type="datetime-local" name="dataInicio">
+        	<input type="date" name="dataInicio">
         </div>
         
         <div class="criar-row">
         	<label>Data de fim</label>
-        	<input type="datetime-local" name="dataFim">
+        	<input type="date" name="dataFim">
         </div>
 
         <!-- Contato -->

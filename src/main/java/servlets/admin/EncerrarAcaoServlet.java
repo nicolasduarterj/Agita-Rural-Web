@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 import modelos.Acao;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @WebServlet("/admin/encerrarAcao")
 public class EncerrarAcaoServlet extends HttpServlet {
@@ -28,7 +28,7 @@ public class EncerrarAcaoServlet extends HttpServlet {
         }
 
         acao.setStatus(Status.DESCONTINUADO);
-        acao.setDataFim(LocalDateTime.now());
+        acao.setDataFim(LocalDate.now());
 
         acaoDAO.atualizar(acao);
 

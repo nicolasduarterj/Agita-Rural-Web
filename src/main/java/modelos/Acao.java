@@ -4,7 +4,6 @@ import enums.Status;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,7 @@ public class Acao {
     private LocalDate dataInicio;
 
     @Column(name = "data_final")
-    private LocalDateTime dataFim;
+    private LocalDate dataFim;
 
     @Embedded
     private Local localizacao;
@@ -61,7 +60,7 @@ public class Acao {
     protected Acao() {}
 
     public Acao(String nome, String sobre, String publicoAlvo, Local localizacao,
-    			LocalDateTime dataInicio, LocalDateTime dataFim,
+    			LocalDate dataInicio, LocalDate dataFim,
                 List<Representante> representantes, Unidade unidade, boolean possuiTaxa) {
         this.nome = nome;
         this.sobre = sobre;
@@ -107,7 +106,7 @@ public class Acao {
         return localizacao;
     }
     
-    private String formatarData(LocalDateTime data) {
+    private String formatarData(LocalDate data) {
     	if (data == null)
     		return "";
     	
@@ -127,7 +126,7 @@ public class Acao {
         return dataInicio;
     }
 
-    public LocalDateTime getDataFim() {
+    public LocalDate getDataFim() {
         return dataFim;
     }
 
@@ -182,7 +181,7 @@ public class Acao {
         this.localizacao = localizacao;
     }
 
-    public void setDataFim(LocalDateTime dataFim) {
+    public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
     }
 

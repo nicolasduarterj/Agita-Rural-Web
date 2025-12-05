@@ -49,6 +49,16 @@ public class CriarAcaoServlet extends HttpServlet {
         Local local = new Local(logradouro, bairro + ", " + cidade, pontoReferencia);
 
         // ----------------------------------------
+        // LOCAL
+        // ----------------------------------------
+        
+        String dataInicioStr = request.getParameter("dataInicio");
+        String dataFimStr = request.getParameter("dataFim");
+        
+        LocalDate dataInicio = LocalDate.parse(dataInicioStr);
+        LocalDate dataFim = LocalDate.parse(dataFimStr);
+        
+        // ----------------------------------------
         // TAXA / PREÇO
         // ----------------------------------------
         boolean possuiTaxa = request.getParameter("possuiTaxa") != null;
@@ -76,6 +86,8 @@ public class CriarAcaoServlet extends HttpServlet {
                 sobre,
                 publicoAlvo,
                 local,
+                dataInicio,
+                dataFim,
                 responsaveis,
                 unidade,
                 possuiTaxa
@@ -88,8 +100,6 @@ public class CriarAcaoServlet extends HttpServlet {
         if (possuiTaxa) {
             acao.setPreco(preco);
         }
-        
-        acao.setDataInicio(LocalDate.now());
 
         // ----------------------------------------
         // SALVAR
