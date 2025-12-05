@@ -48,7 +48,7 @@
 			<div class="card">
 	            <h3><%= acao.getNome() %></h3>
 	            <p><%= acao.getSobre() %></p>
-	            <p>Inicio: <%= acao.getDataInicioFormatada() %><p>
+	            <p>Inicio: <%= acao.getDataInicioFormatada() %> | Fim: <%= acao.getDataFimFormatada() %></p>
 	           	<a href="<%= request.getContextPath()%>/acao?id=<%= acao.getId() %>" class="button">Ver detalhes</a>
 		        </div>
 				<% } %>

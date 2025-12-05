@@ -1,6 +1,7 @@
 package servlets.admin;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +50,15 @@ public class CriarAcaoServlet extends HttpServlet {
 
         Local local = new Local(nomeLocal, enderecoCompleto, pontoReferencia);
 
-
+     // ----------------------------------------
+        // DATAS
+        // ----------------------------------------
+        String dataInicioStr = request.getParameter("dataInicio");
+        String dataFimStr = request.getParameter("dataFim");
+        
+        LocalDateTime dataInicio = LocalDateTime.parse(dataInicioStr);
+        LocalDateTime dataFim = LocalDateTime.parse(dataFimStr);
+        
         // ----------------------------------------
         // TAXA | PREÇO
         // ----------------------------------------
@@ -79,6 +88,8 @@ public class CriarAcaoServlet extends HttpServlet {
                 sobre,
                 publicoAlvo,
                 local,
+                dataInicio,
+                dataFim,
                 reps,
                 unidade,
                 possuiTaxa

@@ -57,6 +57,7 @@ public class Acao {
     protected Acao() {}
 
     public Acao(String nome, String sobre, String publicoAlvo, Local localizacao,
+    			LocalDateTime dataInicio, LocalDateTime dataFim,
                 List<Representante> representantes, Unidade unidade, boolean possuiTaxa) {
 
         this.nome = nome;
@@ -67,7 +68,9 @@ public class Acao {
         this.unidade = unidade;
         this.possuiTaxa = possuiTaxa;
 
-        this.dataInicio = LocalDateTime.now();
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        
         this.status = Status.ATIVO;
 
         this.perfis = new ArrayList<>();

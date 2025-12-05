@@ -2,11 +2,16 @@ package dao;
 
 import modelos.Acao;
 import modelos.Local;
+import modelos.Representante;
+import modelos.Unidade;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import enums.TipoUnidade;
 
 public class AcaoDAO {
 
@@ -14,16 +19,25 @@ public class AcaoDAO {
     private static int contador = 1; 
 
     static {
+    	List<Representante> rps = new ArrayList<Representante>(Arrays.asList(
+    			new Representante("José Carlos", "12345678910", "josecarlos@email.com", "senha")
+    			));
+    	
+    	Unidade departamento = new Unidade("Departamento de Educação Física", TipoUnidade.DEPARTAMENTO);
+    	
         Acao a1 = new Acao("Tênis", "Venha jogar tênis!", "Alunos",
-                new Local("Quadra", "Rural", ""), null, null, false);
+                new Local("Quadra", "Rural", ""), LocalDateTime.now().plusDays(10), LocalDateTime.now().plusDays(20),
+                rps, departamento, false);
         atribuirId(a1);
 
         Acao a2 = new Acao("Jiu-jitsu", "Aprenda a se defender!", "Alunos",
-                new Local("DEFIS", "Rural", ""), null, null, false);
+                new Local("DEFIS", "Rural", ""), LocalDateTime.now().plusDays(10), LocalDateTime.now().plusDays(20),
+                rps, departamento, false);
         atribuirId(a2);
 
         Acao a3 = new Acao("Futebol", "Um clássico brasileiro!", "Alunos",
-                new Local("Ginásio", "Rural", ""), null, null, false);
+                new Local("Ginásio", "Rural", ""), LocalDateTime.now().plusDays(10), LocalDateTime.now().plusDays(20),
+                rps, departamento, false);
         atribuirId(a3);
 
         acoes.add(a1);
